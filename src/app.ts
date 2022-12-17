@@ -9,7 +9,6 @@ app.use(json());
 app.use(urlencoded({ extended: false }));
 app.use(morgan('dev'));
 app.use(cors());
-
 routes(app);
 
 export default app;
