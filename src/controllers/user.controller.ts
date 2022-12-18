@@ -29,8 +29,8 @@ export const loginUser: RequestHandler = async (req, res) => {
           const token = jsonwebtoken.sign({ id: user._id }, config.JWT_TOKEN, {
             expiresIn: 60 * 60 * 24
           });
-          const result = { id: user._id, auth: true, username: user.email, token: token };
-          return res.status(200).json({ message: 'Login', result });
+          const result = { id: user._id, auth: true, email: user.email, token: token };
+          return res.status(200).json(result);
         } else {
           // response is OutgoingMessage object that server response http request
           return res.status(500).json({ success: false, message: 'passwords do not match' });
