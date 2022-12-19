@@ -42,9 +42,7 @@ export const updateProduct: RequestHandler = async (req, res) => {
     const { id } = req.params;
     const { data } = req.body;
 
-    const product = await Product.findByIdAndUpdate(id, data, {
-      new: true
-    });
+    const product = await Product.findByIdAndUpdate(id, { ...data, image: req.file?.path }, { new: true });
     res.status(200).json({ code: 200, message: 'Product Update', product: product });
   } catch (error) {
     return res.status(500).json({ code: 500, message: 'There was an error updating the product', error });
