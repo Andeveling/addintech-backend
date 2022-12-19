@@ -2,7 +2,7 @@
   "name": "addintech-backend",
   "version": "1.0.0",
   "description": "API para desarrollo de prueba tecnica",
-  "main": "index.js",
+  "main": "index.ts",
   "author": "Andres Parra",
   "license": "MIT",
   "engines": {
