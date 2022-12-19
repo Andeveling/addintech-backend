@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express';
 import User from '../models/user.model';
-import { UserI } from 'types/user.types';
+import { UserI } from '../types/user.types';
 import bcrypt, { hash } from 'bcrypt';
 import jsonwebtoken from 'jsonwebtoken';
 import config from '../config';

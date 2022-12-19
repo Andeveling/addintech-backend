@@ -1,5 +1,5 @@
 import { RequestHandler, Response } from 'express';
-import { ProductI } from 'types/product.types';
+import { ProductI } from '../types/product.types';
 import Product from '../models/product.model';
 import path from 'path';
 import { promises as fs } from 'fs';
