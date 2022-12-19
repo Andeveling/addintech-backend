@@ -1,9 +1,8 @@
-import { RequestHandler, Response } from 'express';
-import { ProductI } from '../types/product.types';
-import Product from '../models/product.model';
-import path from 'path';
+import { RequestHandler } from 'express';
 import { promises as fs } from 'fs';
-import config from '../config';
+import path from 'path';
+import Product from '../models/product.model';
+import { ProductI } from '../types/product.types';
 
 export const getAllProducts: RequestHandler = async (req, res) => {
   try {
@@ -31,6 +30,7 @@ export const createProduct: RequestHandler = async (req, res) => {
       price,
       image: req.file?.path
     };
+
     const product = await Product.create(newProduct);
     res.status(200).json({ code: 200, message: 'Product Create', product: product });
   } catch (error) {
@@ -40,9 +40,7 @@ export const createProduct: RequestHandler = async (req, res) => {
 export const updateProduct: RequestHandler = async (req, res) => {
   try {
     const { id } = req.params;
-    const {
-      data: { title, description, price }
-    } = req.body;
+    const { title, description, price } = req.body;
 
     const updateProduct: Partial<ProductI> = {
       title,
