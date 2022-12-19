@@ -29,7 +29,7 @@ export const createProduct: RequestHandler = async (req, res) => {
       title,
       description,
       price,
-      image: `${config.HOST}:${config.PORT}/${req.file?.path}`
+      image: req.file?.path
     };
     const product = await Product.create(newProduct);
     res.status(200).json({ code: 200, message: 'Product Create', product: product });
