@@ -40,9 +40,18 @@ export const createProduct: RequestHandler = async (req, res) => {
 export const updateProduct: RequestHandler = async (req, res) => {
   try {
     const { id } = req.params;
-    const { data } = req.body;
+    const {
+      data: { title, description, price }
+    } = req.body;
 
-    const product = await Product.findByIdAndUpdate(id, { ...data, image: req.file?.path }, { new: true });
+    const updateProduct: Partial<ProductI> = {
+      title,
+      description,
+      price,
+      image: req.file?.path
+    };
+
+    const product = await Product.findByIdAndUpdate(id, updateProduct, { new: true });
     res.status(200).json({ code: 200, message: 'Product Update', product: product });
   } catch (error) {
     return res.status(500).json({ code: 500, message: 'There was an error updating the product', error });
